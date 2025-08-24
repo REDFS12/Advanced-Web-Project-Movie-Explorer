@@ -48,6 +48,12 @@ button {
 }
 button:hover { border-color: var(--accent); }
 
+.btn--fav[aria-pressed="true"] {
+  background: #ff6aa6;
+  color: #19060f;
+  border-color: transparent;
+}
+
 /* ========== Pagina-secties ========== */
 header, footer {
   background: var(--surface-2);
