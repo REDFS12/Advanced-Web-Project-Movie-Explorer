@@ -177,3 +177,12 @@ aside {
   --border: #3a3a3a;
   --accent: #8fa2ff;
 }
+
+#scroll-sentinel {
+  height: 10%;
+}
+.loading-more {
+  text-align: center;
+  color: var(--muted);
+  padding: .75rem 0;
+}
