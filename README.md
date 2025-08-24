@@ -5,7 +5,7 @@
 Movie Explorer is an interactive single-page web application built with HTML, CSS and JavaScript.
 The application uses the TMDb API and allows users to discover, search, filter, sort, and save movies to their personal favorites list.
 
-Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Advanced Web Re-exam course.
+Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Advanced Web Re-exam course. This web application was built on a Mac-device, my apologies if there is something not showing as intended on another type of device.
 
 ---
 
@@ -18,6 +18,7 @@ Objective: A user-friendly, visually appealing application that demonstrates mod
 * 🎨 **Theme switcher** (light/dark)
 * 📱 **Responsive design** with CSS Grid/Flexbox
 * 🖼️ Movies displayed in **cards** with poster, title, release date, rating, and more details
+* 📖 Detail modal: Click on a movie card to see additional information (overview, genres, runtime) in an overlay.
 
 ---
 
@@ -130,6 +131,7 @@ This project applies the requirements of the Advanced Web course. Below is an ov
 * Selecting elements: retrieving from search form and results container.
 * Manipulating elements: dynamically adding movie cards in #results.
 * Event linking: submit event on search form (main.js).
+* Event delegation: a single listener on #results captures clicks on cards and opens the modal.
 🔹 Modern JavaScript
 * Const & Let: used for variables and constants (api.js, main.js).
 * Template literals: for HTML card structure (ui.js).
@@ -139,9 +141,6 @@ This project applies the requirements of the Advanced Web course. Below is an ov
 🔹 Functions
 * Callback functions: used in forEach for rendering. * Default parameters: in API functions (e.g., default language nl-NL).
 * Truthful/False & Nullish coalescing: fallback values ​​for missing data.
-🔹 Classes (OOP)
-* Movie class: structure for movie objects (movie.js).
-* FavoritesManager class: management of favorites in LocalStorage (storage.js).
 🔹 Async JavaScript
 * Promises / Async & Await: retrieving data with fetch (api.js).
 * Error handling: try/catch during API calls (api.js).
@@ -149,6 +148,7 @@ This project applies the requirements of the Advanced Web course. Below is an ov
 🔹 Data & API
 * Fetch: retrieving TMDb data (api.js).
 * JSON manipulation: processing API responses (api.js). 
+* Fallback UI: missing posters → placeholder image.
 🔹 Browser Features
 * LocalStorage: Save favorites and theme (storage.js).
 * Form validation: Search field required (main.js).
@@ -159,6 +159,8 @@ This project applies the requirements of the Advanced Web course. Below is an ov
 * Flexbox: Navigation bar and filters (style.css).
 * Dark/Light theme: Toggle button (main.js, style.css).
 * Icons & buttons: Favorites buttons, Delete buttons (ui.js).
+* UX-feedback: Hover effects and cursor pointer on cards for clear interaction.
+* Accessibility: Aria labels on buttons, modal with Aria-Modal, and close action via Escape key.
 🔹 Tooling & Structure
 * Vite: Project created with Vite (see package.json).
 * Module splitting: api.js, ui.js, storage.js, main.js. * Neat folder structure: src/ with separate JS and CSS files.
