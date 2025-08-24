@@ -113,7 +113,25 @@ To make the app work, you need a free **API key**:
 
 ## 📸 Screenshots
 
-*(Add screenshots of the application here)*
+Main Dashboard in Dark Mode
+<img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 39 38" src="https://github.com/user-attachments/assets/1649a590-c3b5-4735-a856-2cdd2e750b07" />
+
+Light Mode
+<img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 39 43" src="https://github.com/user-attachments/assets/bcfb1148-d9cc-45e6-8c6a-0ce3a0bc1bcf" />
+
+Favorites
+<img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 39 54" src="https://github.com/user-attachments/assets/9373ecf5-8f14-4618-9d38-334aff5a22ca" />
+
+Search
+<img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 40 21" src="https://github.com/user-attachments/assets/034b754e-6a78-4a9e-b008-52bf802a7062" />
+
+Selection Options
+
+
+<img width="154" height="456" alt="Screenshot 2025-08-24 at 23 40 37" src="https://github.com/user-attachments/assets/1ecc7313-f3c5-4fc8-901c-6fccb2897903" />
+
+Search with Selection Criteria
+<img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 41 09" src="https://github.com/user-attachments/assets/2f818ce5-8962-42b8-9e38-16b475562d69" />
 
 ---
 
@@ -121,39 +139,46 @@ To make the app work, you need a free **API key**:
 
 * [TMDb API](https://developer.themoviedb.org/)
 * Advanced Web Course Materials
-* 2 brothers-in-law, who have a PhD and a diploma in AI Computer Sciences
+* 2 very kind brothers-in-law, who have a PhD and a diploma in AI Computer Sciences.
 
 ---
 
 ⚙️ Technical Requirements
 This project applies the requirements of the Advanced Web course. Below is an overview with references to the code:
+
 🔹 DOM Manipulation
 * Selecting elements: retrieving from search form and results container.
 * Manipulating elements: dynamically adding movie cards in #results.
 * Event linking: submit event on search form (main.js).
 * Event delegation: a single listener on #results captures clicks on cards and opens the modal.
+
 🔹 Modern JavaScript
 * Const & Let: used for variables and constants (api.js, main.js).
 * Template literals: for HTML card structure (ui.js).
 * Array methods: map, filter, sort, forEach for filtering/sorting.
 * Arrow functions: compact callbacks and event handlers (ui.js).
 * Ternary operator: show fallback poster (ui.js).
+
 🔹 Functions
 * Callback functions: used in forEach for rendering. * Default parameters: in API functions (e.g., default language nl-NL).
 * Truthful/False & Nullish coalescing: fallback values ​​for missing data.
+
 🔹 Async JavaScript
 * Promises / Async & Await: retrieving data with fetch (api.js).
 * Error handling: try/catch during API calls (api.js).
 * Loading indicator: visible during await (ui.js).
+
 🔹 Data & API
 * Fetch: retrieving TMDb data (api.js).
 * JSON manipulation: processing API responses (api.js). 
 * Fallback UI: missing posters → placeholder image.
+
 🔹 Browser Features
 * LocalStorage: Save favorites and theme (storage.js).
 * Form validation: Search field required (main.js).
 * Observer API: Infinite scroll via IntersectionObserver (main.js).
 * Responsive design: Grid for cards, Flexbox for search bar (style.css).
+
 🔹 Styling & UX
 * CSS Grid: Layout of film cards (style.css).
 * Flexbox: Navigation bar and filters (style.css).
@@ -161,6 +186,7 @@ This project applies the requirements of the Advanced Web course. Below is an ov
 * Icons & buttons: Favorites buttons, Delete buttons (ui.js).
 * UX-feedback: Hover effects and cursor pointer on cards for clear interaction.
 * Accessibility: Aria labels on buttons, modal with Aria-Modal, and close action via Escape key.
+
 🔹 Tooling & Structure
 * Vite: Project created with Vite (see package.json).
 * Module splitting: api.js, ui.js, storage.js, main.js. * Neat folder structure: src/ with separate JS and CSS files.
