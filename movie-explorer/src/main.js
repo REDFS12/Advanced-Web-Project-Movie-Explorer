@@ -1,3 +1,5 @@
+"use strict";
+
 import { getTrending, posterUrl } from "./api.js";
 
 const resultsEl = document.getElementById("results");
@@ -5,7 +7,7 @@ const resultsEl = document.getElementById("results");
 async function loadTrending() {
   try {
     resultsEl.innerHTML = "<p>⏳ Laden...</p>";
-    const data = await getTrending();
+    const data = await getTrending(); // haalt trending films (week)
     resultsEl.innerHTML = ""; // leegmaken
 
     data.results.forEach(movie => {
@@ -21,8 +23,8 @@ async function loadTrending() {
     });
   } catch (err) {
     resultsEl.innerHTML = `<p>⚠️ Fout bij laden: ${err.message}</p>`;
+    console.error(err);
   }
 }
 
-// Start bij laden van de pagina
 window.addEventListener("load", loadTrending);
