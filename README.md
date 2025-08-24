@@ -4,6 +4,7 @@
 
 Movie Explorer is an interactive single-page web application built with HTML, CSS and JavaScript.
 The application uses the TMDb API and allows users to discover, search, filter, sort, and save movies to their personal favorites list.
+This product uses the TMDb API but is not endorsed or certified by TMDb.
 
 Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Advanced Web Re-exam course. This web application was built on a Mac-device, my apologies if there is something not showing as intended on another type of device.
 
