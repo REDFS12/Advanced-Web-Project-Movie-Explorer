@@ -123,10 +123,18 @@ async function loadPage(reset = false) {
     let data;
     if (mode === "trending") {
       data = await getTrending(page);
-    } else {
+    } else if (mode === "search") {
       data = await searchMovies(query, page);
+    } else if (mode === "discover") {
+      data = await discoverMovies({
+        page,
+        with_genres: filtGenre,
+        primary_release_year: filtYear,
+        sort_by: filtSort
+      });
+    } else {
+      throw new Error("Onbekende mode: " + mode);
     }
-        // Controle: als er geen resultaten zijn, zet totalPages op huidige pagina
     if (!data.results || data.results.length === 0) {
       totalPages = page;
       return;
