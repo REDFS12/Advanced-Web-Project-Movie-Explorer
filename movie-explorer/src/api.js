@@ -30,3 +30,9 @@ export async function getTrending(page = 1) {
 export function posterUrl(path) {
   return path ? `${IMG_BASE}${path}` : "https://placehold.co/342x513?text=No+Poster";
 }
+
+// Zoeken op titel
+export async function searchMovies(query, page = 1) {
+  const url = `${API_BASE}/search/movie?${params({ query, page })}`;
+  return getJson(url);
+}
