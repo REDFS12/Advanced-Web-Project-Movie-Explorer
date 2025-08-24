@@ -96,7 +96,7 @@ npm install
 ```bash
 npm run dev
 ```
-4. Open the app in your browser using the link Vite displays (usually `http://localhost:5173`).
+4. Open the app in your browser using the link Vite displays.
 
 ---
 
