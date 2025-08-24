@@ -118,7 +118,33 @@ aside {
   position: sticky;
   top: 1rem;
 }
-#favoritesList { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+/* Favorietenlijst - Flexbox layout */
+#favoritesList li {
+  display: flex;            /* Flexbox active */
+  align-items: center;      /* Verticale centrering */
+  gap: .5rem;               /* Ruimte tussen poster en titel */
+  padding: .3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+#favoritesList li:last-child {
+  border-bottom: none;
+}
+
+.fav-thumb {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.fav-remove {
+  margin-left: auto;        /* duwt knop helemaal rechts */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
 
 /* ========== Responsive ========== */
 @media (max-width: 960px) {
