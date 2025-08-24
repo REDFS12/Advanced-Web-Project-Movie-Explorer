@@ -66,16 +66,16 @@ footer { border-top: 1px solid var(--border); border-bottom: none; }
 main {
   display: grid;
   grid-template-columns: 2fr 1fr; /* content + sidebar */
+    grid-template-areas: 
+    "results aside";
   gap: 1rem;
   padding: 1rem;
 }
 
 /* ========== Zoekformulier ========== */
-header form {
-  display: flex;
-  gap: .5rem;
-  margin-top: .5rem;
-}
+header form { display: flex; gap: .5rem; margin-top: .5rem; }
+header select { padding: .55rem .7rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+
 header input[type="text"], header input[type="search"] {
   flex: 1;
   padding: .55rem .7rem;
@@ -180,6 +180,7 @@ aside {
 
 #scroll-sentinel {
   height: 10%;
+  width: 100%;
 }
 .loading-more {
   text-align: center;

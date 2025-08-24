@@ -36,3 +36,25 @@ export async function searchMovies(query, page = 1) {
   const url = `${API_BASE}/search/movie?${params({ query, page })}`;
   return getJson(url);
 }
+
+// Genres ophalen (voor dropdown)
+export async function getGenres(lang = "nl-NL") {
+  const url = `${API_BASE}/genre/movie/list?${params({ language: lang })}`;
+  return getJson(url); // -> { genres: [ { id, name }, ... ] }
+}
+
+// Discover endpoint met filters + sortering
+export async function discoverMovies({
+  page = 1,
+  with_genres = "",
+  primary_release_year = "",
+  sort_by = "popularity.desc"
+} = {}) {
+  const url = `${API_BASE}/discover/movie?${params({
+    page,
+    with_genres,
+    primary_release_year,
+    sort_by
+  })}`;
+  return getJson(url);
+}

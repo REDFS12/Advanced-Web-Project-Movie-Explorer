@@ -1,6 +1,6 @@
 "use strict";
 
-import { getTrending, searchMovies, posterUrl } from "./api.js";
+import { getTrending, searchMovies, posterUrl, getGenres, discoverMovies } from "./api.js";
 import { loadFavorites, addFavorite, removeFavorite, isFav } from "./storage.js";
 
 const resultsEl = document.getElementById("results");
@@ -9,6 +9,9 @@ const inputEl = document.getElementById("searchInput");
 const favListEl = document.getElementById("favoritesList");
 const themeBtn = document.getElementById("themeToggle");
 const sentinelEl  = document.getElementById("scroll-sentinel");
+const genreSel = document.getElementById("genreSelect");
+const yearSel  = document.getElementById("yearSelect");
+const sortSel  = document.getElementById("sortSelect");
 // Infinite scroll state
 let mode = "trending";   // 'trending' | 'search'
 let query = "";          // actieve zoekterm
@@ -120,6 +123,11 @@ async function loadPage(reset = false) {
       data = await getTrending(page);
     } else {
       data = await searchMovies(query, page);
+    }
+        // Controle: als er geen resultaten zijn, zet totalPages op huidige pagina
+    if (!data.results || data.results.length === 0) {
+      totalPages = page;
+      return;
     }
     totalPages = data.total_pages || 1;
     appendList(data.results || []);
@@ -265,10 +273,32 @@ const io = new IntersectionObserver(
 // Start observeren
 io.observe(sentinelEl);
 
+async function populateGenres() {
+  try {
+    const data = await getGenres();
+    genreSel.innerHTML = `<option value="">Alle genres</option>` +
+      data.genres.map(g => `<option value="${g.id}">${g.name}</option>`).join("");
+  } catch (e) {
+    genreSel.innerHTML = `<option value="">(genres niet geladen)</option>`;
+    console.error("Fout bij laden van genres:", e);
+  }
+}
+
+function populateYears(from = 2025, to = 1950) {
+  const items = ['<option value="">Alle jaren</option>'];
+  for (let y = from; y >= to; y--) {
+    items.push(`<option value="${y}">${y}</option>`);
+  }
+  yearSel.innerHTML = items.join("");
+}
+
+
 
 window.addEventListener("load", () => {
   loadTheme();
   renderFavorites();
+  populateGenres();
+  populateYears();
   loadTrending();
   wireFavRemovalFromSidebar();
 });

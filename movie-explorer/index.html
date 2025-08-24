@@ -9,16 +9,28 @@
 <body>
   <header>
     <h1>🎬 Movie Explorer</h1>
-    <form id="searchForm">
-      <input id="searchInput" type="text" placeholder="Zoek een film..." required />
-      <button type="submit">Zoeken</button>
-      <button type="button" id="themeToggle" title="Thema wisselen">🌙/☀️</button>
-    </form>
+<form id="searchForm">
+  <input id="searchInput" type="text" placeholder="Zoek een film..." required />
+  <select id="genreSelect" title="Genre"></select>
+  <select id="yearSelect" title="Jaar"></select>
+  <select id="sortSelect" title="Sorteren">
+    <option value="popularity.desc">Populair (↘)</option>
+    <option value="popularity.asc">Populair (↗)</option>
+    <option value="vote_average.desc">Rating (↘)</option>
+    <option value="vote_average.asc">Rating (↗)</option>
+    <option value="primary_release_date.desc">Nieuwste</option>
+    <option value="primary_release_date.asc">Oudste</option>
+    <option value="original_title.asc">Titel (A–Z)</option>
+    <option value="original_title.desc">Titel (Z–A)</option>
+  </select>
+  <button type="submit">Zoeken</button>
+  <button type="button" id="themeToggle" title="Thema wisselen">🌙/☀️</button>
+</form>
+
   </header>
 
   <main>
     <section id="results"></section>
-    <div id="scroll-sentinel" aria-hidden="true"></div>
     <aside>
       <h2>❤️ Favorieten</h2>
       <ul id="favoritesList">
@@ -30,6 +42,8 @@
       </ul>
     </aside>
   </main>
+  <div id="scroll-sentinel" aria-hidden="true"></div>
+
 
   <footer>
     <p>Herexamen Project Web Advanced</p>
