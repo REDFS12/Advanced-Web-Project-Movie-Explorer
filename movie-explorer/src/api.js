@@ -58,3 +58,9 @@ export async function discoverMovies({
   })}`;
   return getJson(url);
 }
+
+// Details van een film
+export async function getMovieDetails(id, lang = "nl-NL") {
+  const url = `${API_BASE}/movie/${id}?${params({ language: lang })}`;
+  return getJson(url);
+}

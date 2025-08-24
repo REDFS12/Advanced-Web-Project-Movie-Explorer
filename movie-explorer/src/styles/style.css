@@ -187,3 +187,72 @@ aside {
   color: var(--muted);
   padding: .75rem 0;
 }
+
+/* ===== Modal ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 12px;
+  width: min(900px, 92vw);
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--border);
+}
+.modal-close {
+  position: absolute;
+  top: .5rem; right: .5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .25rem .5rem;
+  cursor: pointer;
+}
+.modal-body {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem;
+}
+.modal-body .poster {
+  width: 100%;
+  border-radius: 8px;
+}
+.modal-meta {
+  display: grid;
+  gap: .35rem;
+}
+.modal-meta h2 { margin: .1rem 0 .25rem; font-size: 1.35rem; }
+.badges { display: flex; flex-wrap: wrap; gap: .4rem; }
+.badge {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  font-size: .8rem;
+}
+.modal-overview { margin-top: .5rem; color: var(--muted); line-height: 1.6; }
+
+@media (max-width: 700px) {
+  .modal-body { grid-template-columns: 1fr; }
+}
+
+/* Klikbare filmcards */
+.card {
+  cursor: pointer;                   /* muis verandert in handje */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);       /* klein “lift”-effect */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}

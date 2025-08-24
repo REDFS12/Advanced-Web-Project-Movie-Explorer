@@ -1,6 +1,6 @@
 "use strict";
 
-import { getTrending, searchMovies, posterUrl, getGenres, discoverMovies } from "./api.js";
+import { getTrending, searchMovies, posterUrl, getGenres, discoverMovies, getMovieDetails } from "./api.js";
 import { loadFavorites, addFavorite, removeFavorite, isFav } from "./storage.js";
 
 const resultsEl = document.getElementById("results");
@@ -12,6 +12,9 @@ const sentinelEl  = document.getElementById("scroll-sentinel");
 const genreSel = document.getElementById("genreSelect");
 const yearSel  = document.getElementById("yearSelect");
 const sortSel  = document.getElementById("sortSelect");
+const modalEl      = document.getElementById("modal");
+const modalBodyEl  = document.getElementById("modalBody");
+const modalCloseEl = document.getElementById("modalClose");
 // Infinite scroll state
 let mode = "trending";   // 'trending' | 'search'
 let query = "";          // actieve zoekterm
@@ -317,6 +320,78 @@ function populateYears(from = 2025, to = 1950) {
   yearSel.innerHTML = items.join("");
 }
 
+function openModal() {
+  modalEl.classList.remove("hidden");
+  modalEl.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden"; // scroll lock
+}
+function closeModal() {
+  modalEl.classList.add("hidden");
+  modalEl.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  modalBodyEl.innerHTML = ""; // opruimen
+}
+
+function renderDetails(movie) {
+  const {
+    title,
+    poster_path,
+    release_date,
+    runtime,
+    vote_average,
+    genres = [],
+    overview
+  } = movie;
+
+  modalBodyEl.innerHTML = `
+    <img class="poster" src="${posterUrl(poster_path)}" alt="${title}">
+    <div class="modal-meta">
+      <h2 id="modalTitle">${title}</h2>
+      <div class="badges">
+        ${release_date ? `<span class="badge">📅 ${release_date}</span>` : ""}
+        ${Number.isFinite(runtime) ? `<span class="badge">⏱️ ${runtime} min</span>` : ""}
+        ${vote_average ? `<span class="badge">⭐ ${vote_average.toFixed(1)}</span>` : ""}
+      </div>
+      ${genres.length ? `<div class="badges">${genres.map(g=>`<span class="badge">${g.name}</span>`).join("")}</div>` : ""}
+      ${overview ? `<p class="modal-overview">${overview}</p>` : `<p class="modal-overview"><em>Geen beschrijving beschikbaar.</em></p>`}
+    </div>
+  `;
+}
+
+// Open detail bij klik op card (maar niet op de fav-knop)
+resultsEl.addEventListener("click", async (e) => {
+  const favBtn = e.target.closest(".btn--fav");
+  if (favBtn) return; // klik was op hartje: negeren
+
+  const card = e.target.closest(".card");
+  if (!card) return;
+
+  // Haal het movie-id uit de aanwezige fav-knop (die zit in elke card)
+  const btn = card.querySelector(".btn--fav");
+  if (!btn) return;
+  const id = Number(btn.dataset.id);
+  if (!id) return;
+
+  try {
+    modalBodyEl.innerHTML = "<p class='modal-overview'>⏳ Details laden…</p>";
+    openModal();
+    const details = await getMovieDetails(id);
+    renderDetails(details);
+  } catch (err) {
+    modalBodyEl.innerHTML = `<p class='modal-overview'>⚠️ Kon details niet laden: ${err.message}</p>`;
+    console.error(err);
+  }
+});
+
+modalCloseEl.addEventListener("click", closeModal);
+modalEl.addEventListener("click", (e) => {
+  if (e.target === modalEl) closeModal(); // klik op de donkere overlay
+});
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modalEl.classList.contains("hidden")) {
+    closeModal();
+  }
+});
 
 
 window.addEventListener("load", () => {
