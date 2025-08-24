@@ -50,8 +50,13 @@ function renderList(movies = []) {
       <h3>${movie.title}</h3>
       <p>📅 ${movie.release_date ?? "Onbekend"}</p>
       <p>⭐ ${movie.vote_average ?? "-"}</p>
-      <button class="btn btn--fav" data-id="${movie.id}" aria-pressed="${pressed}">
-        ${btnLabel}
+      <button
+        class="btn btn--fav"
+        data-id="${movie.id}"
+        data-title="${movie.title.replaceAll('"','&quot;')}"
+        data-poster-path="${movie.poster_path ?? ''}"
+        aria-pressed="${pressed}"      
+      >${btnLabel}
       </button>
     `;
     resultsEl.appendChild(card);
@@ -62,9 +67,9 @@ function renderList(movies = []) {
     btn.addEventListener("click", () => {
       const id = Number(btn.dataset.id);
       const movieCard = btn.closest(".card");
-      const title = movieCard.querySelector("h3").textContent;
+      const title = btn.dataset.title;
       const img = movieCard.querySelector(".poster").getAttribute("src");
-      const poster_path = img.includes("placehold") ? null : movieCard.querySelector(".poster").getAttribute("src").split("/t/p/")[1]; 
+      const poster_path = btn.dataset.posterPath || null;
       // ^ kleine fallback: als er geen echte TMDb poster is, bewaren we null
 
       if (btn.getAttribute("aria-pressed") === "true") {
