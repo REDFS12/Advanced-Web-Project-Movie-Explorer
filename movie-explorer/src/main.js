@@ -19,7 +19,9 @@ let page = 1;            // huidige pagina
 let totalPages = 1;      // totaal aantal pagina's uit TMDb
 let loading = false;     // voorkomt dubbele loads
 
-
+let filtGenre = "";
+let filtYear  = "";
+let filtSort  = "popularity.desc";
 
 let favorites = loadFavorites(); // in-memory kopie
 
@@ -209,13 +211,28 @@ async function handleSearch(e) {
   e.preventDefault();
   const q = inputEl.value.trim();
 
+  // Als leeg → terug naar trending
   if (!q) {
-    return loadTrending();
+    mode = "trending";
+    query = "";
+    await loadPage(true);
+    return;
   }
+
+  // Bij echte zoekopdracht: naar search-mode
   mode = "search";
   query = q;
-  await loadPage(true); // reset en laad resultaten vanaf p1
+
+  genreSel.value = "";
+  yearSel.value  = "";
+  sortSel.value  = "popularity.desc";
+  filtGenre = "";
+  filtYear  = "";
+  filtSort  = "popularity.desc";
+
+  await loadPage(true); // reset lijst en laad pagina 1 met zoekresultaten
 }
+
 
 function wireFavRemovalFromSidebar() {
   favListEl.addEventListener("click", (e) => {
@@ -295,12 +312,25 @@ function populateYears(from = 2025, to = 1950) {
 
 
 window.addEventListener("load", () => {
-  loadTheme();
+  loadTheme?.();
   renderFavorites();
   populateGenres();
   populateYears();
   loadTrending();
-  wireFavRemovalFromSidebar();
+  wireFavRemovalFromSidebar?.();
 });
 formEl.addEventListener("submit", handleSearch);
 themeBtn.addEventListener("click", toggleTheme); // wissel licht/donker
+
+function handleFiltersChange() {
+  filtGenre = genreSel.value;
+  filtYear  = yearSel.value;
+  filtSort  = sortSel.value || "popularity.desc";
+  mode = "discover";
+  query = "";
+  loadPage(true);
+}
+
+genreSel?.addEventListener("change", handleFiltersChange);
+yearSel?.addEventListener("change", handleFiltersChange);
+sortSel?.addEventListener("change", handleFiltersChange);
