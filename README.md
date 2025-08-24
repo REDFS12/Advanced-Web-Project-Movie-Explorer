@@ -21,7 +21,7 @@ Objective: A user-friendly, visually appealing application that demonstrates mod
 
 ---
 
-## 🛠️ Technical requirements (applied in this project)
+## 🛠️ Technical requirements (applied in this project, more in detail below)
 
 * **DOM manipulation** (select, update, events)
 * **Modern JavaScript**:
@@ -119,8 +119,46 @@ To make the app work, you need a free **API key**:
 ## 📖 Resources
 
 * [TMDb API](https://developer.themoviedb.org/)
-* JavaScript (MDN) Documentation
 * Advanced Web Course Materials
-* AI Help (including this chat log)
+* 2 brothers-in-law, who have a PhD and a diploma in AI Computer Sciences
 
 ---
+
+⚙️ Technical Requirements
+This project applies the requirements of the Advanced Web course. Below is an overview with references to the code:
+🔹 DOM Manipulation
+* Selecting elements: retrieving from search form and results container.
+* Manipulating elements: dynamically adding movie cards in #results.
+* Event linking: submit event on search form (main.js).
+🔹 Modern JavaScript
+* Const & Let: used for variables and constants (api.js, main.js).
+* Template literals: for HTML card structure (ui.js).
+* Array methods: map, filter, sort, forEach for filtering/sorting.
+* Arrow functions: compact callbacks and event handlers (ui.js).
+* Ternary operator: show fallback poster (ui.js).
+🔹 Functions
+* Callback functions: used in forEach for rendering. * Default parameters: in API functions (e.g., default language nl-NL).
+* Truthful/False & Nullish coalescing: fallback values ​​for missing data.
+🔹 Classes (OOP)
+* Movie class: structure for movie objects (movie.js).
+* FavoritesManager class: management of favorites in LocalStorage (storage.js).
+🔹 Async JavaScript
+* Promises / Async & Await: retrieving data with fetch (api.js).
+* Error handling: try/catch during API calls (api.js).
+* Loading indicator: visible during await (ui.js).
+🔹 Data & API
+* Fetch: retrieving TMDb data (api.js).
+* JSON manipulation: processing API responses (api.js). 
+🔹 Browser Features
+* LocalStorage: Save favorites and theme (storage.js).
+* Form validation: Search field required (main.js).
+* Observer API: Infinite scroll via IntersectionObserver (main.js).
+* Responsive design: Grid for cards, Flexbox for search bar (style.css).
+🔹 Styling & UX
+* CSS Grid: Layout of film cards (style.css).
+* Flexbox: Navigation bar and filters (style.css).
+* Dark/Light theme: Toggle button (main.js, style.css).
+* Icons & buttons: Favorites buttons, Delete buttons (ui.js).
+🔹 Tooling & Structure
+* Vite: Project created with Vite (see package.json).
+* Module splitting: api.js, ui.js, storage.js, main.js. * Neat folder structure: src/ with separate JS and CSS files.
