@@ -7,6 +7,7 @@ const resultsEl = document.getElementById("results");
 const formEl = document.getElementById("searchForm");
 const inputEl = document.getElementById("searchInput");
 const favListEl = document.getElementById("favoritesList");
+const themeBtn = document.getElementById("themeToggle");
 
 let favorites = loadFavorites(); // in-memory kopie
 
@@ -133,9 +134,32 @@ function wireFavRemovalFromSidebar() {
   });
 }
 
+const THEME_KEY = "theme_v1"; // 'light' | 'dark' | null
+
+function getSystemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+function applyTheme(theme) {
+  const t = theme || getSystemTheme();
+  document.documentElement.setAttribute("data-theme", t);
+  themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
+}
+function loadTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  applyTheme(saved);
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme") || getSystemTheme();
+  const next = current === "dark" ? "light" : "dark";
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
+}
+
 window.addEventListener("load", () => {
+  loadTheme();
   renderFavorites();
   loadTrending();
   wireFavRemovalFromSidebar();
 });
 formEl.addEventListener("submit", handleSearch);
+themeBtn.addEventListener("click", toggleTheme); // wissel licht/donker
