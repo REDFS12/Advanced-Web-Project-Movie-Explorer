@@ -90,7 +90,7 @@ A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop and test th
 ```
 git clone https://github.com/REDFS12/Advanced-Web-Project-Movie-Explorer.git
 ```
-2. Go to folder
+2. Go to folder via terminal
 ```
 cd movie-explorer
 ```
