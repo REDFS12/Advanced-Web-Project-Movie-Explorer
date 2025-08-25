@@ -184,3 +184,8 @@ This project applies the requirements of the Web Advanced course. Below is an ov
 🔹 Tooling & Structure
 * Project set up with Vite.
 * Neat folder structure: src/ with separate JS and CSS files.
+
+## ⏭️ Next Steps
+🔹 Components folder (for larger projects): If you want to add more JS files, you can consider creating a components/ folder in src/ for reusable UI components.
+
+🔹 Assets folder: If you use more images, fonts, or other assets, you can create an assets/ folder in src/ or public/ .
