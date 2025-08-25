@@ -20,7 +20,7 @@ export function isFav(favs, movieId) {
 }
 
 export function addFavorite(favs, movie) {
-  if (isFav(favs, movie.id)) return favs;       // al aanwezig
+  if (isFav(favs, movie.id)) return favs;
   const next = [...favs, { id: movie.id, title: movie.title, poster_path: movie.poster_path }];
   saveFavorites(next);
   return next;

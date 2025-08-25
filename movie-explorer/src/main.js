@@ -15,18 +15,18 @@ const sortSel  = document.getElementById("sortSelect");
 const modalEl      = document.getElementById("modal");
 const modalBodyEl  = document.getElementById("modalBody");
 const modalCloseEl = document.getElementById("modalClose");
-// Infinite scroll state
-let mode = "trending";   // 'trending' | 'search'
-let query = "";          // actieve zoekterm
-let page = 1;            // huidige pagina
-let totalPages = 1;      // totaal aantal pagina's uit TMDb
-let loading = false;     // voorkomt dubbele loads
+/* Infinite scroll state */
+let mode = "trending";   /* 'trending' | 'search' */
+let query = "";          /* actieve zoekterm */
+let page = 1;            /* huidige pagina */
+let totalPages = 1;      /* totaal aantal pagina's uit TMDb */
+let loading = false;     /* voorkomt dubbele loads */
 
 let filtGenre = "";
 let filtYear  = "";
 let filtSort  = "popularity.desc";
 
-let favorites = loadFavorites(); // in-memory kopie
+let favorites = loadFavorites(); /* in-memory kopie */
 
 function showLoading() {
   resultsEl.innerHTML = "<p>⏳ Laden...</p>";
@@ -75,9 +75,9 @@ function appendList(movies = []) {
     resultsEl.appendChild(card);
   });
 
-  // Events op nieuwe ❤️ knoppen
+  /* Events op nieuwe ❤️ knoppen */
   resultsEl.querySelectorAll(".btn--fav").forEach(btn => {
-    if (btn._wired) return; // niet dubbel binden
+    if (btn._wired) return; /* niet dubbel binden */
     btn._wired = true;
     btn.addEventListener("click", () => {
       const id = Number(btn.dataset.id);
@@ -186,7 +186,7 @@ function renderList(movies = []) {
     resultsEl.appendChild(card);
   });
 
-  // Klik op ❤️ knoppen
+  /* Klik op ❤️ knoppen */
   resultsEl.querySelectorAll(".btn--fav").forEach(btn => {
     btn.addEventListener("click", () => {
       const id = Number(btn.dataset.id);
@@ -194,15 +194,15 @@ function renderList(movies = []) {
       const title = btn.dataset.title;
       const img = movieCard.querySelector(".poster").getAttribute("src");
       const poster_path = btn.dataset.posterPath || null;
-      // ^ kleine fallback: als er geen echte TMDb poster is, bewaren we null
+      /* ^ kleine fallback: als er geen echte TMDb poster is, null bewaren */
 
       if (btn.getAttribute("aria-pressed") === "true") {
-        // verwijderen
+        /* verwijderen */
         favorites = removeFavorite(favorites, id);
         btn.setAttribute("aria-pressed", "false");
         btn.textContent = "❤️ Favoriet";
       } else {
-        // toevoegen
+        /* toevoegen */
         favorites = addFavorite(favorites, { id, title, poster_path });
         btn.setAttribute("aria-pressed", "true");
         btn.textContent = "❤️ In favorieten";
@@ -215,14 +215,14 @@ function renderList(movies = []) {
 async function loadTrending() {
   mode = "trending";
   query = "";
-  await loadPage(true); // reset en laad pagina 1
+  await loadPage(true); /* reset en laad pagina 1 */
 }
 
 async function handleSearch(e) {
   e.preventDefault();
   const q = inputEl.value.trim();
 
-  // Als leeg → terug naar trending
+  /* Als leeg → terug naar trending */
   if (!q) {
     mode = "trending";
     query = "";
@@ -230,7 +230,7 @@ async function handleSearch(e) {
     return;
   }
 
-  // Bij echte zoekopdracht: naar search-mode
+  /* Bij echte zoekopdracht: naar search-mode */
   mode = "search";
   query = q;
 
@@ -241,7 +241,7 @@ async function handleSearch(e) {
   filtYear  = "";
   filtSort  = "popularity.desc";
 
-  await loadPage(true); // reset lijst en laad pagina 1 met zoekresultaten
+  await loadPage(true); /* reset lijst en laad pagina 1 met zoekresultaten */
 }
 
 
@@ -252,7 +252,7 @@ function wireFavRemovalFromSidebar() {
     const id = Number(btn.dataset.id);
     favorites = removeFavorite(favorites, id);
     renderFavorites();
-    // update knoppen in cards zodat state klopt
+    /* update knoppen in cards zodat state klopt */
     resultsEl.querySelectorAll(".btn--fav").forEach(b => {
       if (Number(b.dataset.id) === id) {
         b.setAttribute("aria-pressed", "false");
@@ -262,7 +262,7 @@ function wireFavRemovalFromSidebar() {
   });
 }
 
-const THEME_KEY = "theme_v1"; // 'light' | 'dark' | null
+const THEME_KEY = "theme_v1"; /* 'light' | 'dark' | null */
 
 function getSystemTheme() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -286,19 +286,19 @@ function toggleTheme() {
 const io = new IntersectionObserver(
   (entries) => {
     const entry = entries[0];
-    if (!entry.isIntersecting) return; // niet in beeld
+    if (!entry.isIntersecting) return; /* niet in beeld */
     if (page <= totalPages && !loading) {
-      loadPage(false);                   // haal volgende pagina en append
+      loadPage(false);                   /* volgende pagina en append */
     }
   },
   {
-    root: null,            // viewport
-    rootMargin: "200px 0px", // vroegtijdig laden (200px vóór het einde)
+    root: null,            /* viewport */
+    rootMargin: "200px 0px", /* vroegtijdig laden (200px vóór het einde) */
     threshold: 0
   }
 );
 
-// Start observeren
+/* Start observeren */
 io.observe(sentinelEl);
 
 async function populateGenres() {
@@ -323,13 +323,13 @@ function populateYears(from = 2025, to = 1950) {
 function openModal() {
   modalEl.classList.remove("hidden");
   modalEl.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden"; // scroll lock
+  document.body.style.overflow = "hidden"; /* scroll lock */
 }
 function closeModal() {
   modalEl.classList.add("hidden");
   modalEl.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
-  modalBodyEl.innerHTML = ""; // opruimen
+  modalBodyEl.innerHTML = ""; /* opruimen */
 }
 
 function renderDetails(movie) {
@@ -358,15 +358,15 @@ function renderDetails(movie) {
   `;
 }
 
-// Open detail bij klik op card (maar niet op de fav-knop)
+/* Open detail bij klik op card (maar niet op de fav-knop) */
 resultsEl.addEventListener("click", async (e) => {
   const favBtn = e.target.closest(".btn--fav");
-  if (favBtn) return; // klik was op hartje: negeren
+  if (favBtn) return; /* klik was op hartje: negeren */
 
   const card = e.target.closest(".card");
   if (!card) return;
 
-  // Haal het movie-id uit de aanwezige fav-knop (die zit in elke card)
+  /* Haal het movie-id uit de aanwezige fav-knop (die zit in elke card) */
   const btn = card.querySelector(".btn--fav");
   if (!btn) return;
   const id = Number(btn.dataset.id);
@@ -385,7 +385,7 @@ resultsEl.addEventListener("click", async (e) => {
 
 modalCloseEl.addEventListener("click", closeModal);
 modalEl.addEventListener("click", (e) => {
-  if (e.target === modalEl) closeModal(); // klik op de donkere overlay
+  if (e.target === modalEl) closeModal(); /* klik op de donkere overlay */
 });
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !modalEl.classList.contains("hidden")) {
@@ -403,7 +403,7 @@ window.addEventListener("load", () => {
   wireFavRemovalFromSidebar?.();
 });
 formEl.addEventListener("submit", handleSearch);
-themeBtn.addEventListener("click", toggleTheme); // wissel licht/donker
+themeBtn.addEventListener("click", toggleTheme); /* wissel licht/donker */
 
 function handleFiltersChange() {
   filtGenre = genreSel.value;

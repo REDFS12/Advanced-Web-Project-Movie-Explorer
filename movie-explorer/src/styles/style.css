@@ -145,7 +145,7 @@ aside {
 }
 
 .fav-remove {
-  margin-left: auto;        /* duwt knop helemaal rechts */
+  margin-left: auto;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -247,12 +247,13 @@ aside {
   .modal-body { grid-template-columns: 1fr; }
 }
 
-/* Klikbare filmcards */
+/* Klikbare filmcards - mouse-pointer */
 .card {
-  cursor: pointer;                   /* muis verandert in handje */
+  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
+/* Klikbare filmcards - card hover */
 .card:hover {
-  transform: translateY(-4px);       /* klein “lift”-effect */
+  transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
