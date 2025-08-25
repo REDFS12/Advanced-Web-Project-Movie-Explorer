@@ -142,7 +142,7 @@ This project applies the requirements of the Web Advanced course. Below is an ov
 🔹 DOM Manipulation
 * Selecting elements: retrieving from search form and results container.
 * Manipulating elements: dynamically adding movie cards in #results.
-* Event linking: submit event on search form (main.js).
+* Event linking: submit event on search form.
 * Event delegation: a single listener on #results captures clicks on cards and opens the modal.
 
 🔹 Modern JavaScript
