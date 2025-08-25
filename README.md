@@ -69,7 +69,7 @@ project-root(movie-explorer)/
 ---
 
 ## 🚀 Installation & Usage
-A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop this web-application.
+A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop and test this web-application.
 
 1. Clone this repository
 ```
@@ -96,7 +96,7 @@ To make the app work, you need a free **API key**:
 
 1. Create an account on [TMDb](https://www.themoviedb.org/).
 2. Request an API key through your account.
-3. Add this key to `api.js` in your fetch requests.
+3. Add this key to `api.js` in your fetch requests. (Through the Vite software implemented in a .env.local file but hidden by a .gitignore request. to upload to Github)
 
 ---
 
