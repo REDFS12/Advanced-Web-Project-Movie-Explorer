@@ -115,12 +115,15 @@ To make the app work, you need a free **API key**:
 VITE_TMDB_API_KEY=add_your_key_here
 ```
 
-6. Start the development server
+6. Save files (especially the newly created .env.local file with your API key in)
+
+
+7. Start the development server
 
 ```
 npm run dev
 ```
-7. Open the app in your browser using the link Vite displays.
+8. Open the app in your browser using the link Vite displays in the terminal.
 
 ---
 
