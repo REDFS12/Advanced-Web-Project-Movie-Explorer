@@ -1,4 +1,4 @@
-# 🎬 Movie Explorer – Advanced Web Project (Dutch interface - can be altered)
+# 🎬 Movie Explorer – Web Advanced Project (Dutch interface - can be altered)
 
 ## 📌 Project Description
 
@@ -6,7 +6,7 @@ Movie Explorer is an interactive single-page web application built with HTML, CS
 The application uses the TMDb API and allows users to discover, search, filter, sort, and save movies to their personal favorites list.
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
-Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Advanced Web Re-exam course. This web application was built on a Mac-device, my apologies if there is something not showing as intended on another type of device (no access to other device).
+Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Web Advanced exam. This web application was built on a Mac-device, my apologies if there is something not showing as intended on another type of device (I had no access to another device).
 
 ---
 
@@ -25,62 +25,45 @@ Objective: A user-friendly, visually appealing application that demonstrates mod
 
 ## 🛠️ Technical requirements (applied in this project, more in detail below)
 
-* **DOM manipulation** (select, update, events)
-* **Modern JavaScript**:
-
-* `const` & `let`
-* Template literals
-* Array Iteration (`map`, `filter`, `forEach`)
-* Arrow functions
-* Ternary operator
-* Callback functions
-* Promises & Async/Await
-* Observer API (e.g., infinite scroll or lazy loading)
-* **Data & API**:
-
-* `fetch()` for TMDb data
-* Processing and displaying JSON
-* **Storage & Validation**:
-
-* LocalStorage for favorites and theme
-* Form validation for search field
-* **Styling & Layout**:
-
-* CSS Grid / Flexbox
-* Theme toggle (light/dark)
-* Intuitive UI (search field, buttons, icons)
-* **Tooling & Structure**:
-
+* **DOM manipulation (select, update, events)**
+* **Modern JavaScript**
+* **Data & API**
+* **Storage & Validation**
+* **Styling & Layout**
+* **Tooling & Structure**
 * Project set up with **Vite**
-* Separate HTML, CSS, and JS files
-* Neatly structured folder structure
 
 ---
 
 ## 📂 Folder Structure
 
 ```
-project-root/
+project-root(movie-explorer)/
 │
-├── index.html
-├── vite.config.js
-├── package.json
+├── node_modules
+│ └── ...
 │
 ├── src/
-│ ├── main.js
-│ ├── api.js
-│ ├── ui.js
-│ ├── storage.js
 │ └── styles/
-│ └── style.css
+│  └── style.css
+│ ├── api.js
+│ ├── counter.js
+│ ├── main.js
+│ ├── storage.js
+│ 
+├── .env.local
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
 │
-└── dist/
+└── README.md
 ```
 
 ---
 
 ## 🚀 Installation & Usage
-A Mac device, Node.js (v22.18.0 (LTS)) and Vite were installed to develop this web-application.
+A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop this web-application.
 
 1. Clone this repository
 ```
@@ -141,14 +124,14 @@ Search with Selection Criteria
 ## 📖 Resources
 
 * [TMDb API](https://developer.themoviedb.org/)
-* Advanced Web Course Materials
+* Web Advanced Course Materials
 * 2 very kind brothers-in-law, who have a PhD and a diploma in AI Computer Sciences.
 
 ---
 
 ⚙️ Technical Requirements:
 
-This project applies the requirements of the Advanced Web course. Below is an overview with references to the code:
+This project applies the requirements of the Web Advanced course. Below is an overview with references to the code:
 
 🔹 DOM Manipulation
 * Selecting elements: retrieving from search form and results container.
@@ -157,40 +140,41 @@ This project applies the requirements of the Advanced Web course. Below is an ov
 * Event delegation: a single listener on #results captures clicks on cards and opens the modal.
 
 🔹 Modern JavaScript
-* Const & Let: used for variables and constants (api.js, main.js).
-* Template literals: for HTML card structure (ui.js).
+* Const & Let: used for variables and constants.
+* Template literals: for HTML card structure.
 * Array methods: map, filter, sort, forEach for filtering/sorting.
-* Arrow functions: compact callbacks and event handlers (ui.js).
-* Ternary operator: show fallback poster (ui.js).
+* Arrow functions: compact callbacks and event handlers.
+* Ternary operator: show fallback poster.
 
 🔹 Functions
-* Callback functions: used in forEach for rendering. * Default parameters: in API functions (e.g., default language nl-NL).
+* Callback functions: used in forEach for rendering.
+* * Default parameters: in API functions (e.g., default language nl-NL).
 * Truthful/False & Nullish coalescing: fallback values ​​for missing data.
 
 🔹 Async JavaScript
-* Promises / Async & Await: retrieving data with fetch (api.js).
-* Error handling: try/catch during API calls (api.js).
-* Loading indicator: visible during await (ui.js).
+* Promises / Async & Await: retrieving data with fetch.
+* Error handling: try/catch during API calls.
+* Loading indicator: visible during await.
 
 🔹 Data & API
-* Fetch: retrieving TMDb data (api.js).
-* JSON manipulation: processing API responses (api.js). 
+* Fetch: retrieving TMDb data.
+* JSON manipulation: processing & displaying API responses. 
 * Fallback UI: missing posters → placeholder image.
 
 🔹 Browser Features
-* LocalStorage: Save favorites and theme (storage.js).
-* Form validation: Search field required (main.js).
-* Observer API: Infinite scroll via IntersectionObserver (main.js).
-* Responsive design: Grid for cards, Flexbox for search bar (style.css).
+* LocalStorage: Save favorites and theme.
+* Form validation: Search field.
+* Observer API: Infinite scroll (lazy loading) via IntersectionObserver.
+* Responsive design: Grid for cards, Flexbox for search bar.
 
 🔹 Styling & UX
-* CSS Grid: Layout of film cards (style.css).
-* Flexbox: Navigation bar and filters (style.css).
-* Dark/Light theme: Toggle button (main.js, style.css).
-* Icons & buttons: Favorites buttons, Delete buttons (ui.js).
+* CSS Grid: Layout of film cards.
+* Flexbox: Navigation bar and filters.
+* Dark/Light theme: Toggle button.
+* Icons & buttons: Favorites buttons, Delete buttons.
 * UX-feedback: Hover effects and cursor pointer on cards for clear interaction.
 * Accessibility: Aria labels on buttons, modal with Aria-Modal, and close action via Escape key.
 
 🔹 Tooling & Structure
-* Vite: Project created with Vite (see package.json).
-* Module splitting: api.js, ui.js, storage.js, main.js. * Neat folder structure: src/ with separate JS and CSS files.
+* Project set up with Vite.
+* Neat folder structure: src/ with separate JS and CSS files.
