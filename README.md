@@ -88,11 +88,11 @@ A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop and test th
 
 1. Clone this repository
 ```
-git clone https://github.com/<your-username>/movie-explorer.git
+git clone https://github.com/REDFS12/Advanced-Web-Project-Movie-Explorer.git
 cd movie-explorer
 ```
 2. Install dependencies
-
+```
 npm install
 ```
 3. Start the development server
@@ -101,7 +101,7 @@ npm install
 npm run dev
 ```
 4. Open the app in your browser using the link Vite displays.
-```
+
 ---
 
 ## 🔑 API Key
