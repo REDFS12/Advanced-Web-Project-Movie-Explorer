@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Explorer (TMDb)</title>
+  <script type="module" crossorigin src="/assets/index-Dn7gTnV3.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DM4gnH3P.css">
+</head>
+<body>
+  <header>
+    <h1>🎬 Movie Explorer</h1>
+    <body>
+      This product uses the TMDb API but is not endorsed or certified by TMDb.
+    </body>
+<form id="searchForm">
+  <input id="searchInput" type="text" placeholder="Zoek een film..." required />
+  <select id="genreSelect" title="Genre"></select>
+  <select id="yearSelect" title="Jaar"></select>
+  <select id="sortSelect" title="Sorteren">
+    <option value="popularity.desc">Populair (↘)</option>
+    <option value="popularity.asc">Populair (↗)</option>
+    <option value="vote_average.desc">Rating (↘)</option>
+    <option value="vote_average.asc">Rating (↗)</option>
+    <option value="primary_release_date.desc">Nieuwste</option>
+    <option value="primary_release_date.asc">Oudste</option>
+    <option value="original_title.asc">Titel (A–Z)</option>
+    <option value="original_title.desc">Titel (Z–A)</option>
+  </select>
+  <button type="submit">Zoeken</button>
+  <button type="button" id="themeToggle" title="Thema wisselen">🌙/☀️</button>
+</form>
+
+  </header>
+
+  <main>
+    <section id="results"></section>
+    <aside>
+      <h2>❤️ Favorieten</h2>
+      <ul id="favoritesList">
+    <li>
+      <img class="fav-thumb" src="https://placehold.co/40x60" alt="test">
+      <span>Voorbeeld film</span>
+      <button class="fav-remove">❌</button>
+    </li>
+      </ul>
+    </aside>
+  </main>
+  <div id="scroll-sentinel" aria-hidden="true"></div>
+
+
+  <footer>
+    <p>Herexamen Project Web Advanced</p>
+  </footer>
+
+  <!-- Detail Modal -->
+<div id="modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button id="modalClose" class="modal-close" aria-label="Sluiten">❌</button>
+    <div id="modalBody" class="modal-body">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
