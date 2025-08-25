@@ -129,6 +129,9 @@ Selection Options
 
 
 <img width="154" height="456" alt="Screenshot 2025-08-24 at 23 40 37" src="https://github.com/user-attachments/assets/1ecc7313-f3c5-4fc8-901c-6fccb2897903" />
+<img width="256" height="2068" alt="Screenshot 2025-08-25 at 11 11 59" src="https://github.com/user-attachments/assets/ee0d77de-84a8-4192-ae15-4c96eea5385b" />
+<img width="142" height="216" alt="Screenshot 2025-08-25 at 11 12 04" src="https://github.com/user-attachments/assets/8b11c9af-a4d6-4bb1-a7cd-a99968d43517" />
+
 
 Search with Selection Criteria
 <img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 41 09" src="https://github.com/user-attachments/assets/2f818ce5-8962-42b8-9e38-16b475562d69" />
