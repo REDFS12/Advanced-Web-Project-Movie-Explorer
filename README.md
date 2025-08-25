@@ -69,7 +69,7 @@ project-root(movie-explorer)/
 ---
 
 ## 🚀 Installation & Usage
-A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop this web-application.
+A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop and test this web-application.
 
 1. Clone this repository
 ```
@@ -96,7 +96,7 @@ To make the app work, you need a free **API key**:
 
 1. Create an account on [TMDb](https://www.themoviedb.org/).
 2. Request an API key through your account.
-3. Add this key to `api.js` in your fetch requests.
+3. Add this key to `api.js` in your fetch requests. (Through the Vite software implemented in a .env.local file but hidden by a .gitignore request. to upload to Github)
 
 ---
 
@@ -142,7 +142,7 @@ This project applies the requirements of the Web Advanced course. Below is an ov
 🔹 DOM Manipulation
 * Selecting elements: retrieving from search form and results container.
 * Manipulating elements: dynamically adding movie cards in #results.
-* Event linking: submit event on search form (main.js).
+* Event linking: submit event on search form.
 * Event delegation: a single listener on #results captures clicks on cards and opens the modal.
 
 🔹 Modern JavaScript
@@ -184,3 +184,8 @@ This project applies the requirements of the Web Advanced course. Below is an ov
 🔹 Tooling & Structure
 * Project set up with Vite.
 * Neat folder structure: src/ with separate JS and CSS files.
+
+## ⏭️ Next Steps
+🔹 Components folder (for larger projects): If you want to add more JS files, you can consider creating a components/ folder in src/ for reusable UI components.
+
+🔹 Assets folder: If you use more images, fonts, or other assets, you can create an assets/ folder in src/ or public/ .
