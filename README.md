@@ -1,4 +1,4 @@
-# 🎬 Movie Explorer – Advanced Web Project
+# 🎬 Movie Explorer – Advanced Web Project (Dutch interface - can be altered)
 
 ## 📌 Project Description
 
@@ -6,7 +6,7 @@ Movie Explorer is an interactive single-page web application built with HTML, CS
 The application uses the TMDb API and allows users to discover, search, filter, sort, and save movies to their personal favorites list.
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
-Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Advanced Web Re-exam course. This web application was built on a Mac-device, my apologies if there is something not showing as intended on another type of device.
+Objective: A user-friendly, visually appealing application that demonstrates modern JavaScript techniques and meets the requirements of the Advanced Web Re-exam course. This web application was built on a Mac-device, my apologies if there is something not showing as intended on another type of device (no access to other device).
 
 ---
 
@@ -80,25 +80,24 @@ project-root/
 ---
 
 ## 🚀 Installation & Usage
+A Mac device, Node.js (v22.18.0 (LTS)) and Vite were installed to develop this web-application.
 
 1. Clone this repository
-
-```bash
+```
 git clone https://github.com/<your-username>/movie-explorer.git
 cd movie-explorer
 ```
 2. Install dependencies
 
-```bash
 npm install
 ```
 3. Start the development server
 
-```bash
+```
 npm run dev
 ```
 4. Open the app in your browser using the link Vite displays.
-
+```
 ---
 
 ## 🔑 API Key
@@ -117,7 +116,7 @@ To make the app work, you need a free **API key**:
 Main Dashboard in Dark Mode
 <img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 39 38" src="https://github.com/user-attachments/assets/1649a590-c3b5-4735-a856-2cdd2e750b07" />
 
-Light Mode
+Main Dashboard in Light Mode
 <img width="3564" height="2574" alt="Screenshot 2025-08-24 at 23 39 43" src="https://github.com/user-attachments/assets/bcfb1148-d9cc-45e6-8c6a-0ce3a0bc1bcf" />
 
 Favorites
@@ -144,7 +143,8 @@ Search with Selection Criteria
 
 ---
 
-⚙️ Technical Requirements
+⚙️ Technical Requirements:
+
 This project applies the requirements of the Advanced Web course. Below is an overview with references to the code:
 
 🔹 DOM Manipulation
