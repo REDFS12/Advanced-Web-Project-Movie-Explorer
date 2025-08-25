@@ -301,16 +301,20 @@ const io = new IntersectionObserver(
 /* Start observeren */
 io.observe(sentinelEl);
 
-async function populateGenres() {
-  try {
-    const data = await getGenres();
-    genreSel.innerHTML = `<option value="">Alle genres</option>` +
-      data.genres.map(g => `<option value="${g.id}">${g.name}</option>`).join("");
-  } catch (e) {
-    genreSel.innerHTML = `<option value="">(genres niet geladen)</option>`;
-    console.error("Fout bij laden van genres:", e);
-  }
+function populateGenres() {
+  if (!genreSel) return;
+  getGenres()
+    .then(data => {
+      genreSel.innerHTML =
+        `<option value="">Alle genres</option>` +
+        (data.genres || []).map(g => `<option value="${g.id}">${g.name}</option>`).join("");
+    })
+    .catch(e => {
+      genreSel.innerHTML = `<option value="">(genres niet geladen)</option>`;
+      console.error("Fout bij laden van genres:", e);
+    });
 }
+
 
 function populateYears(from = 2025, to = 1950) {
   const items = ['<option value="">Alle jaren</option>'];
