@@ -252,7 +252,6 @@ function wireFavRemovalFromSidebar() {
     const id = Number(btn.dataset.id);
     favorites = removeFavorite(favorites, id);
     renderFavorites();
-    /* update knoppen in cards zodat state klopt */
     resultsEl.querySelectorAll(".btn--fav").forEach(b => {
       if (Number(b.dataset.id) === id) {
         b.setAttribute("aria-pressed", "false");
