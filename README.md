@@ -89,29 +89,38 @@ A Mac device, Node.js (v22.18.0 (LTS)) and Vite were used to develop and test th
 1. Clone this repository
 ```
 git clone https://github.com/REDFS12/Advanced-Web-Project-Movie-Explorer.git
+```
+2. Go to folder
+```
 cd movie-explorer
 ```
-2. Install dependencies
+3. Install dependencies
 ```
 npm install
 ```
-3. Start the development server
-
+4. Create a new file in the project root
 ```
-npm run dev
+.env.local
 ```
-4. Open the app in your browser using the link Vite displays.
-
----
-
+5. Get & Add API key (description below)
 ## 🔑 API Key
 
 This application uses the [TMDb API](https://developer.themoviedb.org/).
 To make the app work, you need a free **API key**:
 
-1. Create an account on [TMDb](https://www.themoviedb.org/).
-2. Request an API key through your account.
-3. Add this key to `api.js` in your fetch requests. (Through the Vite software implemented in a .env.local file but hidden by a .gitignore request. to upload to Github)
+5.1 Create an account on [TMDb](https://www.themoviedb.org/).
+5.2 Request an API key through your account.
+5.3 Add this key to `.env.local`. (This was hidden by a .gitignore request. to upload to Github): 
+```
+VITE_TMDB_API_KEY=add_your_key_here
+```
+
+6. Start the development server
+
+```
+npm run dev
+```
+7. Open the app in your browser using the link Vite displays.
 
 ---
 
