@@ -13,10 +13,13 @@ Objective: A user-friendly, visually appealing application that demonstrates mod
 ## ⚡ Features
 
 * 🔎 **Search** for movies by title
+
 (the Search, Filter and Sort functions are not connected to each other, to maintain clarity between functions)
 * 🎯 **Filter** by genre, release year, popularity
+
 (the Search, Filter and Sort functions are not connected to each other, to maintain clarity between functions)
 * ↕️ **Sort** (e.g., by title, release date, rating)
+
 (the Search, Filter and Sort functions are not connected to each other, to maintain clarity between functions)
 * ❤️ **Save favorites** to LocalStorage (retained between sessions)
 * 🎨 **Theme switcher** (light/dark)
